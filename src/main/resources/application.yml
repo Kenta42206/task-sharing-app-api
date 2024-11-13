@@ -1,20 +1,23 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/todo
-    username: dev
-    password: dev
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
   flyway:
-    user: dev
-    password: dev
-    url: jdbc:postgresql://localhost:5432/todo
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
     baseline-version: 0
     enabled: true
     baseline-on-migrate: true
+  config:
+    import:
+      - optional:file:.env[.properties]
 
 app:
-  jwtSecret: bXluYW1laXNtaWtvd2VhcmVtaWtvbWV0dG9teW5hbWVpc21pa293ZWFyZW1pa29tZXR0b215bmFtZWlzbWlrb3dlYXJlbWlrb21ldHRv # JWTシークレット
-  jwtExpirationMs: 864000
+  jwtSecret: ${JWT_SECRET}
+  jwtExpirationMs: ${JWT_EXP}
 server:
   servlet:
     encoding:

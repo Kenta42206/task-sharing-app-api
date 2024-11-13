@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo
+    username: dev
+    password: dev
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    user: dev
+    password: dev
+    url: jdbc:postgresql://localhost:5432/todo
+    baseline-version: 0
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  jwtSecret: bXluYW1laXNtaWtvd2VhcmVtaWtvbWV0dG9teW5hbWVpc21pa293ZWFyZW1pa29tZXR0b215bmFtZWlzbWlrb3dlYXJlbWlrb21ldHRv # JWTシークレット
+  jwtExpirationMs: 864000
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+
+logging:
+  level:
+    root: info
+  file:
+    name: server.log
